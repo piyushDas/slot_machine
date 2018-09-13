@@ -1,0 +1,87 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+*:focus{
+  outline: none;
+}
+
+.container{
+  text-align: center;
+  position: relative;
+}
+#dice-face{
+  height: 220px;
+  width: 220px;
+  border: 1px solid #aaaaaa59;
+  border-radius: 8px;
+  position: absolute;
+  top: 20vh;
+  left: 50vw;
+  transform: translateX(-50%);
+  box-shadow: 3px 3px 10px #33333340;
+  padding: 20px;
+}
+
+button{
+  border: none;
+  color: #fff;
+  background: #FFC107;
+  border-radius: 5px;
+  padding: 10px 40px;
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+
+button:hover{
+  box-shadow: 0 0 5px #8e8e8e;
+  background: #ff9800;
+  cursor: pointer;
+}
+
+.shake{
+  -webkit-animation: shake 3s infinite linear;
+}
+
+@@keyframes shake {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transition: rotate(359deg);
+  }
+}
+
+@-webkit-keyframes shake {
+		from {
+				-webkit-transform: rotate3d(0, 0, 0, 0deg);
+        /* -webkit-transform: translate(0); */
+        left: 50vw;
+		}
+		to {
+				-webkit-transform: rotate3d(1, 1, 1, 359deg);
+        /* -webkit-transform: translate(-30px); */
+        left: 30vw;
+		}
+}
+
+.dot-box{
+  /* border: 1px solid #eee; */
+  height: 60px;
+  width: 60px;
+}
+
+.row{
+  display: flex;
+}
+
+.dot-box > div{
+  background: #607D8B;
+  height: 30px;
+  width: 30px;
+  margin: 15px;
+  border-radius: 50%;
+  box-shadow: 2px 3px 7px #69696982
+}
