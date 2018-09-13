@@ -1,77 +1,48 @@
-function shake(){
-  addAnimation();
+var slotState = {
+
+}
+var imgobj = [{
+    "path"  : 'css/images/batman.png'
+  },{
+    "path"  : 'css/images/capt.png'
+  },{
+    "path"  : 'css/images/deadpoo.png'
+  },{
+    "path"  : 'css/images/gl.jpg'
+  },{
+    "path"  : 'css/images/ww.png'
+  },{
+    "path"  : 'css/images/spider.png'
+  },{
+    "path"  : 'css/images/superman.png'
+  }
+]
+function generateSlots(){
+
+  for (var i = 0; i < 3; i++) {
+    var template =
+      `<div class = 'slot-panel' id ="panel-`+i+`"></div>`;
+    $("#slot-container").append(template);
+  }
+  genarateImagesInSlots();
+}
+generateSlots();
+
+
+
+function genarateImagesInSlots(){
+  for (var i = 0; i < imgobj.length; i++) {
+    var template = `<img src = ` + imgobj[i].path + ` class='slot-image'>`;
+    $(".slot-panel").append(template);
+  }
 }
 
-function addAnimation(){
-  document.getElementById('dice-face').classList.add('shake');
-  var timer = setInterval(function(){
-    showFaceOutput();
-  }, 300)
+function runMachine(){
+  $("#panel-0 .slot-image").addClass('animated-up');
+  $("#panel-1 .slot-image").addClass('animated-down');
+  $("#panel-2 .slot-image").addClass('animated-up');
   setTimeout(function(){
-    document.getElementById('dice-face').classList.remove('shake');
-    clearInterval(timer);
-    showFaceOutput();
-  },3000);
+    $(".slot-image").removeClass('animated-up');
+      $(".slot-image").removeClass('animated-down');
+  },3000)
 }
-
-function generateDots(){
-  for (var i = 0; i < 3; i++) {
-    var temp = "<div class = 'row'></div>";
-    $("#dice-face").append(temp);
-  }
-  for (var i = 0; i < 3; i++) {
-    var dot = "<div class='dot-box'><div class = 'dot'></div></div>";
-    $(".row").append(dot);
-  }
-  showFaceOutput();
-}
-
-function generateFaceValue(){
-  var num = Math.floor(Math.random() * 6) + 1;
-  console.log(num);
-  return num;
-}
-
-function showFaceOutput(){
-  var value = generateFaceValue();
-  $(".dot").hide();
-  var els = $(".dot")
-  switch(value){
-    case 1:
-          $(els[4]).show();
-          break;
-    case 2:
-          $(els[5]).show();
-          $(els[3]).show();
-          break;
-    case 3:
-          $(els[0]).show();
-          $(els[4]).show();
-          $(els[8]).show();
-          break;
-    case 4:
-          $(els[0]).show();
-          $(els[2]).show();
-          $(els[8]).show();
-          $(els[6]).show();
-          break;
-    case 5:
-          $(els[0]).show();
-          $(els[2]).show();
-          $(els[4]).show();
-          $(els[8]).show();
-          $(els[6]).show();
-          break;
-    case 6:
-          $(els[0]).show();
-          $(els[2]).show();
-          $(els[1]).show();
-          $(els[8]).show();
-          $(els[7]).show();
-          $(els[6]).show();
-          break;
-
-  }
-}
-
-generateDots();
