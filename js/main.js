@@ -1,5 +1,7 @@
 var slotState = {
-
+  "credit" : 100000,
+  "bet" : 100,
+  "panels":{}
 }
 var imgobj = [{
     "path"  : 'css/images/batman.png'
@@ -17,8 +19,20 @@ var imgobj = [{
     "path"  : 'css/images/superman.png'
   }
 ]
-function generateSlots(){
 
+function initializeApp(){
+  generateSlots();
+  updateSlotState();
+};
+
+function updateSlotState(){
+  $("#current-credit").text(slotState.credit);
+  $("#current-bet").text(slotState.bet);
+};
+
+initializeApp();
+
+function generateSlots(){
   for (var i = 0; i < 3; i++) {
     var template =
       `<div class = 'slot-panel' id ="panel-`+i+`"></div>`;
@@ -26,7 +40,7 @@ function generateSlots(){
   }
   genarateImagesInSlots();
 }
-generateSlots();
+
 
 
 
@@ -41,8 +55,45 @@ function runMachine(){
   $("#panel-0 .slot-image").addClass('animated-up');
   $("#panel-1 .slot-image").addClass('animated-down');
   $("#panel-2 .slot-image").addClass('animated-up');
+  stopMachine();
+}
+
+
+function stopMachine(){
   setTimeout(function(){
-    $(".slot-image").removeClass('animated-up');
-      $(".slot-image").removeClass('animated-down');
-  },3000)
+    $("#panel-0 .slot-image").removeClass('animated-up');
+    getRandomImage('#panel-0');
+  }, 3000);
+  setTimeout(function(){
+  $("#panel-1 .slot-image").removeClass('animated-down');
+    getRandomImage('#panel-1');
+  }, 3500);
+  setTimeout(function(){
+    $("#panel-2 .slot-image").removeClass('animated-up');
+    getRandomImage('#panel-2');
+    processResults();
+  }, 4000);
+
+}
+
+function getRandomImage(node){
+  var pos = Math.floor(Math.random() * 6) + 1;
+  pos = pos * (-200);
+  $(node + " .slot-image").css('top', pos);
+  slotState.panels[node] = pos;
+  console.log(slotState.panels);
+}
+
+function processResults(){
+  if((slotState.panels['#panel-0'] === slotState.panels['#panel-2']) && (slotState.panels['#panel-0'] === slotState.panels['#panel-1'])){
+    slotState.credit = slotState.credit + (10 * slotState.bet);
+  } else {
+    slotState.credit = slotState.credit - slotState.bet;
+  }
+  updateSlotState();
+}
+
+function raise(){
+  slotState.bet = slotState.bet + 100;
+  updateSlotState();
 }

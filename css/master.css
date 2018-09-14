@@ -8,18 +8,18 @@
 }
 
 .container{
-  text-align: center;
-  position: relative;
+  height: 100vh;
+  background: #f8f8f8;
+  padding-top: 10vh;
 }
 
 button{
   border: none;
   color: #fff;
   background: #FFC107;
-  border-radius: 5px;
+  border-radius: 3px;
   padding: 10px 40px;
-  margin-top: 20px;
-  font-size: 20px;
+  font-size: 15px
 }
 
 
@@ -31,18 +31,26 @@ button:hover{
 
 #slot-container{
   height: 200px;
-  border: 1px solid blue;
   width: 500px;
   text-align: center;
-  padding: 0 24px;
+  padding: 0 15px;
   overflow: hidden;
+  background: #f8f8f8;
+  box-shadow: 0 0 5px #3333 inset;
 }
 .slot-panel{
   min-height: 200px;
   width: 150px;
-  border: 1px solid;
+  /* border: 1px solid; */
   float: left;
   position: relative;
+  margin: 0 2px;
+  padding-right: 5px;
+  border-right: 2px solid #33333326;
+}
+
+#panel-2{
+  border: none;
 }
 
 .slot-image{
@@ -100,4 +108,95 @@ button:hover{
   to {
     top: 0px;
   }
+}
+
+
+
+
+.display-box{
+  float: left;
+  width: 35%;
+  margin: 30px 1.5%;
+}
+
+.display-box > div{
+  float: left;
+  width: 70%;
+  box-shadow: 2px 2px 5px #3333332b;
+  height: 90px;
+}
+
+.display-box:last-of-type > div{
+  box-shadow: none;
+  height: auto;
+  width: 100%;
+}
+
+.display-box > div.card-control{
+  width: 30%;
+  background: #f8f8f8;
+  color: #607D8B;
+}
+
+.display-box:last-of-type{
+  width: 20%;
+  text-align: left;
+  padding-left: 20px;
+  padding-top: 7px;
+}
+.display-box:last-of-type > div:last-of-type{
+  width: 100%;
+  line-height: normal;
+  background: none;
+}
+
+.display-box:last-of-type > div:last-of-type button{
+  padding: 6px 20px;
+  margin-top: 8px;
+}
+
+#game-play{
+  background: #fff;
+  box-shadow: 0 0 10px #33333312;
+  height: 80vh;
+  margin: auto 10vw;
+  overflow: auto;
+  min-width: 800px;
+  width: 80vw;
+  text-align: center;
+  text-align: -webkit-center;
+  padding: 20px;
+
+
+}
+
+.tile-label{
+  height: 30px;
+  line-height: 40px;
+  font-size: 13px;
+  color: #4CAF50;
+}
+
+.tile-description{
+  height: 60px;
+  line-height: 50px;
+  font-size: 30px;
+  color: #03A9F4;
+}
+
+.display-box > div.card-control:hover{
+  cursor: pointer;
+  background: #dddddd59;
+}
+
+
+.display-box > div.card-control > i{
+  height: 60px;
+  line-height: 70px;
+  font-size: 25px;
+}
+.display-box > div.card-control > div{
+  height: 30px;
+  line-height: 10px;
+  font-size: 12px;
 }
