@@ -1,27 +1,56 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Dice</title>
+    <title>Slots</title>
     <link rel="stylesheet" href="./css/master.css">
-    <script src="libs/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
   </head>
   <body>
-    <div class="container">
-
+    <div class = "container">
       <div id="game-select">
 
       </div>
 
       <div id="game-play">
-        <div class="" id = "slot-container">
+        <div class="" id = "slot-container"></div>
+        <div class="machine-display">
+          <div class="display-box">
+            <div class="">
+              <div class="tile-label">Credit</div>
+              <div class="tile-description" id = "current-credit"></div>
+            </div>
+            <div class = "card-control">
+              <i class="fas fa-plus"></i>
+              <div class="">Add Credit</div>
+            </div>
+          </div>
 
-        </div>
-        <div class="">
-          <button type="button" name="button" onclick="runMachine()">Play</button>
+          <div class="display-box">
+            <div class="">
+              <div class="tile-label">Bet</div>
+              <div class="tile-description" id = "current-bet"></div>
+            </div>
+            <div class = "card-control" onclick="raise()">
+              <i class="fas fa-arrow-up"></i>
+              <div class="">Raise Bet</div>
+            </div>
+          </div>
+
+          <div class="display-box">
+            <div class="">
+              <button type="button" name="button" onclick="runMachine()">Play</button>
+            </div>
+            <div class="">
+              <button type="button" name="button"><i class="fas fa-redo"></i></button>
+              <button type="button" name="button"><i class="fas fa-times" aria-hidden="true"></i></button>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
   </body>
+  <script src="libs/jquery.min.js"></script>
   <script src="js/main.js" charset="utf-8"></script>
 </html>
